@@ -1,0 +1,85 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  background: lightskyblue;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.box {
+  background: cadetblue;
+  width: 33vw;
+  height: 43vh;
+}
+
+.input-parent {
+  height: 10%;
+  background-color: coral;
+  position: relative;
+}
+
+.password-output {
+  display: block;
+  width: 90%;
+  height: 100%;
+  margin: 10px auto;
+  font-size: 20px;
+  padding-left: 5px;
+}
+
+.btn-copy {
+  top: 50%;
+  left: 85%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  padding: 5px 10px;
+}
+
+/* //////////////////////////////////////////////////////////// */
+
+.lower-part {
+  margin: 25px auto;
+  padding: 5px;
+  background-color: darkgoldenrod;
+  width: 90%;
+  height: 75%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.input-for-length,
+.input-for-numbers,
+.input-for-symbols,
+.input-for-small-letters,
+.input-for-big-letters,
+.generate {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.input-length {
+  width: 40px;
+  padding: 2px 5px;
+  font-size: 18px;
+}
+
+.btn-generate {
+  width: 100%;
+  padding: 5px;
+}
+
+input[type='checkbox'] {
+  padding-left: 30px;
+}
