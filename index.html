@@ -9,6 +9,7 @@
     <script src="script.js" defer></script>
   </head>
   <body>
+    <h1>Password Generator</h1>
     <div class="box">
       <div class="input-parent">
         <input type="text" class="password-output" />
@@ -17,15 +18,32 @@
       <div class="lower-part">
         <div class="input-for-length">
           <label for="password-length">Choose password length</label>
-          <input type="text" name="password-length" class="input-length" />
+          <input
+            type="text"
+            name="password-length"
+            class="input-length"
+            size="2"
+            maxlength="2"
+            placeholder=""
+          />
         </div>
         <div class="input-for-numbers">
           <label for="numbers-choice">Include numbers</label>
-          <input type="checkbox" name="numbers-choice" class="numbers" />
+          <input
+            type="checkbox"
+            name="numbers-choice"
+            class="numbers"
+            checked
+          />
         </div>
         <div class="input-for-symbols">
           <label for="symbols-choice">Include symbols</label>
-          <input type="checkbox" name="symbols-choice" class="symbols" />
+          <input
+            type="checkbox"
+            name="symbols-choice"
+            class="symbols"
+            checked
+          />
         </div>
         <div class="input-for-small-letters">
           <label for="small-letters-choice">Include lowercase letters</label>
@@ -33,6 +51,7 @@
             type="checkbox"
             name="small-letters-choice"
             class="small-letters"
+            checked
           />
         </div>
         <div class="input-for-big-letters">
@@ -41,6 +60,7 @@
             type="checkbox"
             name="big-letters-choice"
             class="big-letters"
+            checked
           />
         </div>
         <div class="generate">
@@ -48,21 +68,5 @@
         </div>
       </div>
     </div>
-    <!-- <div class="container">
-      <div class="app-body">
-        <div class="output">
-          <input class="output-paragraph">
-          <button class="copy-content">Copy</button>
-        </input>
-        </div>
-        <div class="length">
-          <label for="length">Type Password Length</label>
-          <input type="number" id="length-input" />
-        </div>
-        <div class="button-container">
-          <button class="generate">Generate Password</button>
-        </div>
-      </div>
-    </div> -->
   </body>
 </html>
