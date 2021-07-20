@@ -1,8 +1,15 @@
 'use strict';
+// /////////////////////////////////////////////////////////////////
 const outputParagraph = document.querySelector('.password-output');
 const copyContentBtn = document.querySelector('.btn-copy');
 const lengthInput = document.querySelector('.input-length');
 const generate = document.querySelector('.generate');
+// //////////////////////////////////////////////////////////////////
+const numbersChkbox = document.querySelector('.numbers');
+const symbolsChkbox = document.querySelector('.symbols');
+const smallLettersChkbox = document.querySelector('.small-letters');
+const bigLettersChkbox = document.querySelector('.big-letters');
+// /////////////////////////////////////////////////////////////////
 // Numbers
 function randomNumber() {
   const numbers = Array.from({ length: 10 }, (_, i) => String(i));
@@ -44,32 +51,51 @@ function shuffle(array) {
   return array;
 }
 generate.addEventListener('click', function () {
-  const output = [];
-  // ///////////////////////////////////////////////
-  let lengthInputCopy = +lengthInput.value;
-  // ///////////////////////////////////////////////
-
+  let temporary = new Array(+lengthInput.value).fill('*');
   if (lengthInput.value === '') {
-    lengthInputCopy = 9;
+    temporary = new Array(8).fill('*');
   }
-  /////////////////////////////////////////////////
-  while (output.length < lengthInputCopy) {
-    if (output.length < lengthInputCopy) {
-      output.push(randomSymbol());
-    }
-    if (output.length < lengthInputCopy) {
-      output.push(randomNumber());
-    }
-    if (output.length < lengthInputCopy) {
-      output.push(randomUpLetter());
-    }
-    if (output.length < lengthInputCopy) {
-      output.push(randomLoLetter());
-    }
-    lengthInputCopy--;
+  console.log(bigLettersChkbox.checked);
+  // ////////////////////////////////////////////////////////////
+  if (
+    bigLettersChkbox.checked &&
+    !smallLettersChkbox.checked &&
+    !numbersChkbox.checked &&
+    !symbolsChkbox.checked
+  ) {
+    const result = temporary.map((el, i, arr) => {
+      return (el = randomUpLetter());
+    });
+    console.log(result);
+    outputParagraph.value = shuffle(result).join('');
   }
-  console.log(shuffle(output));
-  outputParagraph.value = shuffle(output).join('');
+  // //////////////////////////////////////////////
+  // const output = [];
+  // // ///////////////////////////////////////////////
+  // let lengthInputCopy = +lengthInput.value;
+  // // ///////////////////////////////////////////////
+
+  // if (lengthInput.value === '') {
+  //   lengthInputCopy = 9;
+  // }
+  // /////////////////////////////////////////////////
+  // while (output.length < lengthInputCopy) {
+  //   if (output.length < lengthInputCopy) {
+  //     output.push(randomSymbol());
+  //   }
+  //   if (output.length < lengthInputCopy) {
+  //     output.push(randomNumber());
+  //   }
+  //   if (output.length < lengthInputCopy) {
+  //     output.push(randomUpLetter());
+  //   }
+  //   if (output.length < lengthInputCopy) {
+  //     output.push(randomLoLetter());
+  //   }
+  //   lengthInputCopy--;
+  // }
+  // console.log(shuffle(output));
+  // outputParagraph.value = shuffle(output).join('');
 });
 
 function copyPassword() {
