@@ -43,6 +43,11 @@ h1 {
   margin: 10px auto;
   font-size: 20px;
   padding-left: 5px;
+  transition: outline 0.2s;
+}
+.password-output:focus {
+  outline-color: #3b75d8;
+  outline-offset: 1px;
 }
 
 .btn-copy {
@@ -71,7 +76,7 @@ h1 {
 .lower-part {
   margin: 25px auto;
   /* padding: 5px; */
-  /* background-color: darkgoldenrod; */
+
   width: 90%;
   height: 75%;
   display: flex;
@@ -113,6 +118,9 @@ h1 {
   border: 1px solid #333;
   outline: none;
 }
+.btn-generate:hover {
+  background-color: #3b75d8;
+}
 
 input[type='checkbox'] {
   padding-left: 30px;
@@ -120,4 +128,6 @@ input[type='checkbox'] {
 
 label {
   font-style: italic;
+  font-size: 18px;
+  color: #3b75d8;
 }
