@@ -70,32 +70,6 @@ generate.addEventListener('click', function () {
     outputParagraph.value = shuffle(result).join('');
   }
   // //////////////////////////////////////////////
-  // const output = [];
-  // // ///////////////////////////////////////////////
-  // let lengthInputCopy = +lengthInput.value;
-  // // ///////////////////////////////////////////////
-
-  // if (lengthInput.value === '') {
-  //   lengthInputCopy = 9;
-  // }
-  // /////////////////////////////////////////////////
-  // while (output.length < lengthInputCopy) {
-  //   if (output.length < lengthInputCopy) {
-  //     output.push(randomSymbol());
-  //   }
-  //   if (output.length < lengthInputCopy) {
-  //     output.push(randomNumber());
-  //   }
-  //   if (output.length < lengthInputCopy) {
-  //     output.push(randomUpLetter());
-  //   }
-  //   if (output.length < lengthInputCopy) {
-  //     output.push(randomLoLetter());
-  //   }
-  //   lengthInputCopy--;
-  // }
-  // console.log(shuffle(output));
-  // outputParagraph.value = shuffle(output).join('');
 });
 
 function copyPassword() {
