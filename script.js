@@ -9,6 +9,8 @@ const numbersChkbox = document.querySelector('.numbers');
 const symbolsChkbox = document.querySelector('.symbols');
 const smallLettersChkbox = document.querySelector('.small-letters');
 const bigLettersChkbox = document.querySelector('.big-letters');
+const checkBoxes = document.querySelectorAll('input[type=checkbox]');
+// console.log(checkBoxes);
 // /////////////////////////////////////////////////////////////////
 // Numbers
 function randomNumber() {
@@ -51,24 +53,33 @@ function shuffle(array) {
   return array;
 }
 generate.addEventListener('click', function () {
-  let temporary = new Array(+lengthInput.value).fill('*');
-  if (lengthInput.value === '') {
-    temporary = new Array(8).fill('*');
-  }
-  console.log(bigLettersChkbox.checked);
-  // ////////////////////////////////////////////////////////////
-  if (
-    bigLettersChkbox.checked &&
-    !smallLettersChkbox.checked &&
-    !numbersChkbox.checked &&
-    !symbolsChkbox.checked
-  ) {
-    const result = temporary.map((el, i, arr) => {
-      return (el = randomUpLetter());
-    });
-    console.log(result);
-    outputParagraph.value = shuffle(result).join('');
-  }
+  // //////////////////////////////////////
+  isInputValid(lengthInput);
+  areAllBoxesUnchecked(checkBoxes);
+  // /////////////////////////////////////
+  const limit = +lengthInput.value || 8;
+  console.log(limit);
+  // ////////////////////////////////////////////
+
+  // ///////////////////////////////////////////
+  // let temporary = new Array(+lengthInput.value).fill('*');
+  // if (lengthInput.value === '') {
+  //   temporary = new Array(8).fill('*');
+  // }
+  // console.log(bigLettersChkbox.checked);
+  // // ////////////////////////////////////////////////////////////
+  // if (
+  //   bigLettersChkbox.checked &&
+  //   !smallLettersChkbox.checked &&
+  //   !numbersChkbox.checked &&
+  //   !symbolsChkbox.checked
+  // ) {
+  //   const result = temporary.map((el, i, arr) => {
+  //     return (el = randomUpLetter());
+  //   });
+  //   console.log(result);
+  //   outputParagraph.value = shuffle(result).join('');
+  // }
   // //////////////////////////////////////////////
 });
 
@@ -83,3 +94,15 @@ function copyPassword() {
   }
 }
 copyContentBtn.addEventListener('click', copyPassword);
+
+// ///////////////////////////////////////////////////////////
+function areAllBoxesUnchecked(list) {
+  const test = Array.from(list).every(input => !input.checked);
+  if (test) alert('You must check at least one box !');
+}
+function isInputValid(input) {
+  if (!isFinite(input.value)) {
+    alert('Enter numeric value !');
+    input.value = '';
+  }
+}
