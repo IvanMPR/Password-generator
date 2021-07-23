@@ -52,10 +52,20 @@ function shuffle(array) {
   }
   return array;
 }
+const helperObject = {
+  randomNumber: randomNumber(),
+  randomSymbol: randomSymbol(),
+  randomLoLetter: randomLoLetter(),
+  randomUpLetter: randomUpLetter(),
+};
 generate.addEventListener('click', function () {
   // //////////////////////////////////////
   isInputValid(lengthInput);
-  areAllBoxesUnchecked(checkBoxes);
+  if (areAllBoxesUnchecked(checkBoxes)) {
+    alert('Check at least one box !');
+    return;
+  }
+
   // /////////////////////////////////////
   function limit() {
     const limit = +lengthInput.value || 7;
@@ -68,38 +78,15 @@ generate.addEventListener('click', function () {
   // ///////////////////////////////////////////
   const output = [];
   while (output.length <= limit()) {
-    if (numbersChkbox.checked && output.length <= limit()) {
-      output.push(randomNumber());
-    } else if (symbolsChkbox.checked && output.length <= limit()) {
-      output.push(randomSymbol());
-    } else if (smallLettersChkbox.checked && output.length <= limit()) {
-      output.push(randomLoLetter());
-    } else if (bigLettersChkbox.checked && output.length <= limit()) {
-      output.push(randomUpLetter());
-    } else {
-      continue;
+    if (output.length <= limit()) {
+      filterChecked(checkBoxes).forEach(el => {
+        output.push(helperObject[el]);
+      });
     }
+    console.log(output);
   }
   // ///////////////////////////////////////////
-  // let temporary = new Array(+lengthInput.value).fill('*');
-  // if (lengthInput.value === '') {
-  //   temporary = new Array(8).fill('*');
-  // }
-  // console.log(bigLettersChkbox.checked);
-  // // ////////////////////////////////////////////////////////////
-  // if (
-  //   bigLettersChkbox.checked &&
-  //   !smallLettersChkbox.checked &&
-  //   !numbersChkbox.checked &&
-  //   !symbolsChkbox.checked
-  // ) {
-  //   const result = temporary.map((el, i, arr) => {
-  //     return (el = randomUpLetter());
-  //   });
-  //   console.log(result);
   outputParagraph.value = shuffle(output).join('');
-  // outputParagraph.value = shuffle(result).join('');
-  // }
   // //////////////////////////////////////////////
 });
 
@@ -117,8 +104,7 @@ copyContentBtn.addEventListener('click', copyPassword);
 
 // ///////////////////////////////////////////////////////////
 function areAllBoxesUnchecked(list) {
-  const test = Array.from(list).every(input => !input.checked);
-  if (test) alert('You must check at least one box !');
+  return Array.from(list).every(input => !input.checked);
 }
 function isInputValid(input) {
   if (!isFinite(input.value)) {
@@ -131,3 +117,36 @@ function filterChecked(list) {
   return test.map(el => el.dataset.description);
   // console.log(test);
 }
+// let temporary = new Array(+lengthInput.value).fill('*');
+// if (lengthInput.value === '') {
+//   temporary = new Array(8).fill('*');
+// }
+// console.log(bigLettersChkbox.checked);
+// // ////////////////////////////////////////////////////////////
+// if (
+//   bigLettersChkbox.checked &&
+//   !smallLettersChkbox.checked &&
+//   !numbersChkbox.checked &&
+//   !symbolsChkbox.checked
+// ) {
+//   const result = temporary.map((el, i, arr) => {
+//     return (el = randomUpLetter());
+//   });
+//   console.log(result);
+// outputParagraph.value = shuffle(output).join('');
+// outputParagraph.value = shuffle(result).join('');
+// }
+// while (output.length <= limit()) {
+//   if (numbersChkbox.checked && output.length <= limit()) {
+//     output.push(randomNumber());
+//     if (symbolsChkbox.checked && output.length <= limit()) {
+//       output.push(randomSymbol());
+//       if (smallLettersChkbox.checked && output.length <= limit()) {
+//         output.push(randomLoLetter());
+//         if (bigLettersChkbox.checked && output.length <= limit()) {
+//           output.push(randomUpLetter());
+//         }
+//       }
+//     }
+//   }
+// }
