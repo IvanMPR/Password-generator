@@ -57,10 +57,29 @@ generate.addEventListener('click', function () {
   isInputValid(lengthInput);
   areAllBoxesUnchecked(checkBoxes);
   // /////////////////////////////////////
-  const limit = +lengthInput.value || 8;
-  console.log(limit);
-  // ////////////////////////////////////////////
+  function limit() {
+    const limit = +lengthInput.value || 7;
+    return limit === 7 ? 7 : limit - 1;
+  }
 
+  // ////////////////////////////////////////////
+  filterChecked(checkBoxes);
+  console.log(filterChecked(checkBoxes));
+  // ///////////////////////////////////////////
+  const output = [];
+  while (output.length <= limit()) {
+    if (numbersChkbox.checked && output.length <= limit()) {
+      output.push(randomNumber());
+    } else if (symbolsChkbox.checked && output.length <= limit()) {
+      output.push(randomSymbol());
+    } else if (smallLettersChkbox.checked && output.length <= limit()) {
+      output.push(randomLoLetter());
+    } else if (bigLettersChkbox.checked && output.length <= limit()) {
+      output.push(randomUpLetter());
+    } else {
+      continue;
+    }
+  }
   // ///////////////////////////////////////////
   // let temporary = new Array(+lengthInput.value).fill('*');
   // if (lengthInput.value === '') {
@@ -78,7 +97,8 @@ generate.addEventListener('click', function () {
   //     return (el = randomUpLetter());
   //   });
   //   console.log(result);
-  //   outputParagraph.value = shuffle(result).join('');
+  outputParagraph.value = shuffle(output).join('');
+  // outputParagraph.value = shuffle(result).join('');
   // }
   // //////////////////////////////////////////////
 });
@@ -105,4 +125,9 @@ function isInputValid(input) {
     alert('Enter numeric value !');
     input.value = '';
   }
+}
+function filterChecked(list) {
+  const test = Array.from(list).filter(input => input.checked);
+  return test.map(el => el.dataset.description);
+  // console.log(test);
 }
