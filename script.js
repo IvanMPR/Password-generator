@@ -78,33 +78,31 @@ generate.addEventListener('click', function () {
   // ///////////////////////////////////////////
   const output = [];
   // ///////////////////////////////////////////
-  while (output.length <= limit()) {
-    if (!numbersChkbox.checked) continue;
-    {
-      if (numbersChkbox.checked && output.length <= limit()) {
-        output.push(randomNumber());
-        if (!symbolsChkbox.checked) continue;
-        {
-          if (symbolsChkbox.checked && output.length <= limit()) {
-            output.push(randomSymbol());
-            if (!smallLettersChkbox.checked) continue;
-            {
-              if (smallLettersChkbox.checked && output.length <= limit()) {
-                output.push(randomLoLetter());
-                if (!bigLettersChkbox.checked) continue;
-                {
-                  if (bigLettersChkbox.checked && output.length <= limit()) {
-                    output.push(randomUpLetter());
-                  }
-                }
-              }
-            }
-          }
-        }
+  function fillOutputArray(arr) {
+    const choice = function (el) {
+      return el === 'rN'
+        ? randomNumber()
+        : el === 'rS'
+        ? randomSymbol()
+        : el === 'rLL'
+        ? randomLoLetter()
+        : randomUpLetter();
+    };
+    for (let i = 0; i <= limit(); i++) {
+      output.push(choice(arr[i]));
+      if (arr[i] === -1) {
+        i = 0;
       }
     }
-  }
+    // arr.forEach(el => {
+    //   return output.push(choice(el));
+    // });
+    // if (output.length < limit()) {
 
+    // }
+    console.log(output);
+  }
+  fillOutputArray([...filterChecked(checkBoxes)]);
   // ///////////////////////////////////////////
   outputParagraph.value = shuffle(output).join('');
   // //////////////////////////////////////////////
@@ -202,4 +200,30 @@ function filterChecked(list) {
 //     });
 //   }
 //   console.log(output);
+// }
+// while (output.length <= limit()) {
+//   if (!numbersChkbox.checked) continue;
+//   {
+//     if (numbersChkbox.checked && output.length <= limit()) {
+//       output.push(randomNumber());
+//       if (!symbolsChkbox.checked) continue;
+//       {
+//         if (symbolsChkbox.checked && output.length <= limit()) {
+//           output.push(randomSymbol());
+//           if (!smallLettersChkbox.checked) continue;
+//           {
+//             if (smallLettersChkbox.checked && output.length <= limit()) {
+//               output.push(randomLoLetter());
+//               if (!bigLettersChkbox.checked) continue;
+//               {
+//                 if (bigLettersChkbox.checked && output.length <= limit()) {
+//                   output.push(randomUpLetter());
+//                 }
+//               }
+//             }
+//           }
+//         }
+//       }
+//     }
+//   }
 // }
