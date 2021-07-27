@@ -32,7 +32,6 @@ h1 {
 
 .input-parent {
   height: 10%;
-  /* background-color: coral; */
   position: relative;
 }
 
@@ -62,21 +61,12 @@ h1 {
   color: #fff;
   border: none;
   outline: none;
-  /* border: 1px transparent rgba(10, 10, 10, 0); */
-  /* outline: none; */
 }
-/* .btn-copy:hover {
-  outline: black;
-  outline-color: #3b75d8;
-  outline-offset: 31px;
-} */
 
 /* //////////////////////////////////////////////////////////// */
 
 .lower-part {
   margin: 25px auto;
-  /* padding: 5px; */
-
   width: 90%;
   height: 75%;
   display: flex;
