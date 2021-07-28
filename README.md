@@ -1,6 +1,9 @@
 # Password-generator
 HTML CSS JS
 
+Generate random password of desired length, with option to include/exclude numbers, symbols, uppercase letters and lowercase letters.
+Default password length is 8 characters long.
+
 The idea for project came from here:
 https://www.youtube.com/watch?v=duNmhKgtcsI
 
