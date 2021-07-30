@@ -61,6 +61,11 @@ h1 {
   color: #fff;
   border: none;
   outline: none;
+  transition: all 0.2s;
+}
+
+.btn-copy:hover {
+  background-color: #1f54b1;
 }
 
 /* //////////////////////////////////////////////////////////// */
@@ -107,13 +112,10 @@ h1 {
   font-size: 18px;
   border: 1px solid #333;
   outline: none;
+  transition: all 0.2s;
 }
 .btn-generate:hover {
-  background-color: #3b75d8;
-}
-
-input[type='checkbox'] {
-  padding-left: 30px;
+  background-color: #1f54b1;
 }
 
 label {
