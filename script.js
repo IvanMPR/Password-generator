@@ -127,9 +127,8 @@ function copyPassword() {
   if (outputParagraph.value !== '') {
     outputParagraph.select();
     document.execCommand('copy');
-    alert('Copied the text: ' + outputParagraph.value);
   } else {
-    alert('Empty');
+    alert('You copied empty field !');
   }
 }
 copyContentBtn.addEventListener('click', copyPassword);
